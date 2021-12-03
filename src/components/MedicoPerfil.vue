@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="franja">
-      <router-link to="/" class="btn-star">
+      <router-link :to="'/calificaciones/' + medico.medicoId" class="btn-star">
         <i class="fas fa-star star-perfil"></i
       ></router-link>
     </div>

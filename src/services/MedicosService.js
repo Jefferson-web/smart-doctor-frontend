@@ -19,9 +19,21 @@ class MedicosService {
         return http.get(`/ConocerMedicos/VerPerfil/${medicoId}`);
     }
 
-    ListarHorariosDisponibles(medicoId, fecha){
+    ListarHorariosDisponibles(medicoId, fecha) {
         let params = { "medicoId": medicoId, "fecha": fecha };
         return http.get('/ProgramarCita/ListarHorariosDisponibles', { params });
+    }
+
+    VerCalificaciones(medicoId) {
+        return http.get(`/EvaluarMedico/VerCalificaciones/${medicoId}`);
+    }
+
+    VerPromedioCalificacion(medicoId) {
+        return http.get(`/EvaluarMedico/VerPromedioCalificacion/${medicoId}`);
+    }
+
+    InfoMedico(medicoId){
+        return http.get(`/EvaluarMedico/InfoMedico/${ medicoId }`);
     }
 
 }

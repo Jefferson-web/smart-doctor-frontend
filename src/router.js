@@ -26,6 +26,10 @@ export default new VueRouter({
         {
             path: '/programar-teleconsulta/:medicoId',
             component: () => import("./components/ProgramarTeleconsulta")
+        },
+        {
+            path: '/calificaciones/:medicoId',
+            component: () => import("./components/Calificaciones")
         }
     ]
 });
