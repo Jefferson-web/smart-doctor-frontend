@@ -16,6 +16,11 @@ class TokenService {
         return JSON.parse(localStorage.getItem("user"));
     }
 
+    getUserId(){
+        const user = this.getUser();
+        return user.pacienteId;
+    }
+
     get isAuthenticate(){
         return !!localStorage.getItem("token");
     }

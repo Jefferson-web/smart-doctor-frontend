@@ -40,6 +40,30 @@ class MedicosService {
         return http.get(`/GestionarConsultorio/VerHorario/${horarioId}`);
     }
 
+    ProgramarCita(cita){
+        return http.post('/ProgramarCita/Programar', cita);
+    }
+
+    ListarCitasPaciente(pacienteId){
+        return http.get(`/GestionarAtenciones/ListarCitasPaciente/${pacienteId}`);
+    }
+
+    VerDetalleCita(citaId){
+        return http.get(`/GestionarAtenciones/VerDetalles/${citaId}`);
+    }
+
+    ListarTiposDePago(){
+        return http.get('/Pagos/ListarTiposDePago');
+    }
+
+    RegistrarPago(pago){
+        return http.post('/Pagos/RegistrarPago', pago);
+    }
+
+    ListarPagos(pacienteId){
+        return http.get(`/Pagos/ListarPagos/${pacienteId}`);
+    }
+
 }
 
 export default new MedicosService();

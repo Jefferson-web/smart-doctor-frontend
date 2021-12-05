@@ -36,25 +36,24 @@
         </div>
       </router-link>
     </div>
-    <button class="btn-logout" v-on:click="Salir"><i class="fas fa-sign-out-alt"></i></button>
+    <!-- <button class="btn-logout" v-on:click="Salir"><i class="fas fa-sign-out-alt"></i></button> -->
+    <BottomNavigation></BottomNavigation>
   </div>
 </template>
 
 <script>
 
 import TokenService from '../services/TokenService';
+import BottomNavigation from './BottomNavigation.vue';
 
 export default {
   name: "Inicio",
+  components: {
+    BottomNavigation
+  },
   data(){
     return {
       paciente: {}
-    }
-  },
-  methods: {
-    Salir(){
-      TokenService.logout();
-      this.$router.replace("/login");
     }
   },
   mounted(){
@@ -69,8 +68,6 @@ export default {
   text-align: start;
   margin-bottom: 20px;
 }
-
-
 .usuario {
   width: 100%;
   height: 150px;

@@ -60,7 +60,6 @@ export default {
       MedicosService.ListarEspecialidades(filtro_nombre)
         .then((response) => {
           this.especialidades = response.data;
-          console.log(this.especialidades);
         })
         .catch((e) => {
           console.log(e);

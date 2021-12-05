@@ -52,6 +52,31 @@ const router = new VueRouter({
             path: '/registro',
             name: 'Registro',
             component: () => import("./components/Registro")
+        },
+        {
+            path: '/citas-agendadas',
+            name: 'CitasAgendadas',
+            component: () => import("./components/CitasAgendadas")
+        },
+        {
+            path: '/indicaciones',
+            name: 'Indicaciones',
+            component: () => import("./components/Indicaciones")
+        },
+        {
+            path: '/metodo-pago',
+            name: 'MetodoPago',
+            component: () => import("./components/MetodoPago")
+        },
+        {
+            path: '/tarjeta-credito',
+            name: 'TarjetaCredito',
+            component: () => import("./components/TarjetaCredito")
+        },
+        {
+            path: '/listar-pagos',
+            name: 'ListarPagos',
+            component: () => import("./components/ListarPagos")
         }
     ]
 });

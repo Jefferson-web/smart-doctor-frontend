@@ -47,14 +47,20 @@
       </div>
       <div class="titulo-ac">INFORMACIÓN ADICIONAL</div>
       <p class="texto-ac">Motivo de consulta</p>
-      <textarea name="motivo" v-model="motivo" class="form-control" cols="30" rows="3"></textarea>
-      <br>
-      <button type="button" class="btn-login" :disabled="motivo == ''" v-bind:class="{ btnDisable: motivo == '' || motivo == null}">
+      <textarea
+        name="motivo"
+        v-model="motivo"
+        class="form-control"
+        cols="30"
+        rows="3"
+      ></textarea>
+      <br />
+      <button v-on:click="Agendar" type="button" class="btn-login">
         <div>Continuar</div>
         <i class="fas fa-chevron-right"></i>
       </button>
     </div>
-    <br><br>
+    <br /><br />
   </div>
 </template>
 
@@ -96,12 +102,28 @@ export default {
       MedicosService.VerHorario(horarioId)
         .then((response) => {
           this.horario = response.data;
-          this.horario.hora_inicio = new Date(
-            this.horario.hora_inicio
-          ).toLocaleString();
+          this.horario.hora_inicio = new Date(this.horario.hora_inicio).toLocaleString();
         })
         .catch((e) => console.log(e));
     },
+    Agendar(){
+      if(this.motivo !== "" && this.motivo !== null){
+        const cita = {
+          medicoId: this.medicoId,
+          pacienteId: this.paciente.pacienteId,
+          horarioId: this.horarioId,
+          motivo: this.motivo
+        }
+        MedicosService.ProgramarCita(cita).then(response => {
+          const citaCreada = response.data;
+          this.$router.replace({ name: 'MetodoPago', query: { citaId: citaCreada.citaId }});
+        })
+        .catch(e => console.log(e));
+        
+      } else {
+        alert("Ingrese el motivo de la consulta");
+      }
+    }
   },
   mounted() {
     this.medicoId = this.$route.query.medicoId;
@@ -177,7 +199,7 @@ export default {
   padding: 15px 25px;
   border-radius: 15px;
 }
-.btnDisable{
-    background: rgb(197, 197, 197);
+.btnDisable {
+  background: rgb(197, 197, 197);
 }
 </style>
