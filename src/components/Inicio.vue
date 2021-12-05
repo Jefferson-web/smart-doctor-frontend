@@ -1,8 +1,12 @@
 <template>
   <div>
     <div class="usuario">
-      <h5 class="nombre_usuario">Hola Jefferson Henry</h5>
-      <p class="edad_usuario">Hombre 22 años</p>
+      <h5 class="nombre_usuario">Hola {{ paciente.nombres }}</h5>
+      <p class="edad_usuario"> 
+        <span v-if="paciente.sexo">Hombre</span>
+        <span v-if="!paciente.sexo">Mujer</span>
+        <span> {{ paciente.edad }} años</span>
+      </p>
     </div>
     <div class="px-4">
       <h6 class="title">Elige qué deseas hacer hoy</h6>
@@ -36,8 +40,19 @@
 </template>
 
 <script>
+
+import TokenService from '../services/TokenService';
+
 export default {
   name: "Inicio",
+  data(){
+    return {
+      paciente: {}
+    }
+  },
+  mounted(){
+    this.paciente = TokenService.getUser();
+  }
 };
 </script>
 

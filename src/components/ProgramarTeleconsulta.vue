@@ -1,5 +1,10 @@
 <template>
-  <div class="mx-4">
+  <div>
+    <div class="header">
+      <router-link class="link-regreso" :to="'/medico/' + medicoId"><i class="fas fa-arrow-left"></i></router-link>
+      <span>Agendar cita</span>  
+    </div>
+    <div class="mx-4">
     <v-row justify="center" class="mt-4">
       <v-date-picker v-model="picker" color="primary" v-on:change="datePickerChange()"></v-date-picker>
     </v-row>
@@ -7,10 +12,20 @@
     
     <div class="horarios-disponibles">
       <div class="radio" v-for="(horario, index) in horarios" :key="index">
-        <input type="radio" name="horario" :id="'rdHorario' + horario.horarioId" v-on:change="onChecked(horario.horarioId)" class="radio__input">
+        <input type="radio" name="horario" :value="horario.horarioId" v-model="horarioId" :id="'rdHorario' + horario.horarioId" v-on:change="onChecked()" class="radio__input">
         <label class="radio__label" :for="'rdHorario' + horario.horarioId">{{ horario.hora_inicio }}</label>
       </div>
     </div>
+    <div class="text-right">
+      <button class="programar-horario mt-5"
+        v-if="horarios.length > 0" 
+        :disabled="!isSelected"
+        v-bind:class="{ btnActive : isSelected }"
+        v-on:click="ProgramarCita">
+        PROGRAMAR HORARIO
+      </button>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -25,6 +40,7 @@ export default {
       medicoId: 0,
       horarios: [],
       horarioId: 0,
+      isSelected: false,
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     };
   },
@@ -46,8 +62,11 @@ export default {
         return horario;
       });
     },
-    onChecked(horarioId){
-      this.horarioId = horarioId;
+    onChecked(){
+      this.isSelected = true;
+    },
+    ProgramarCita(){
+      this.$router.replace({name: 'AgendarCita', query : { medicoId: this.medicoId, horarioId: this.horarioId }});
     }
   },
   mounted(){
@@ -68,21 +87,51 @@ export default {
     display: none;
   }
   .radio__label{
-    padding: 5px 0px;
-    width: 55px;
+    padding: 10px 25px;
     text-align: center;
-    background: #BBDEFB;
+    background: #d7edff;
     color: #3F51B5;
     font-size: 15px;
     margin: 0px 10px 10px 0px;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
   }
   .radio__label:hover{
-    background: #a5d7ff;
+    background: #a5d6ffbe;
   }
   .radio__input:checked + .radio__label{
-    background: #a5d7ff;
-    outline: solid 1px #3F51B5;
+    background: #d7edff;
+    outline: solid 2px #1976d2;
+    position: relative;
+  }
+
+  .radio__input:checked + .radio__label::before{
+    content: "\2713";
+    font-weight: 400;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    background: #1976d2;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+  .v-picker__title{
+    display: none !important;
+  }
+  .programar-horario{
+    font-size: 15px;
+    font-weight: 400;
+    text-align: right;
+  }
+  .btnActive{
+    color: #1976d2;
   }
 </style>

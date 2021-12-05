@@ -1,6 +1,11 @@
 <template>
-  <div class="m-4">
-    <input
+  <div>
+    <div class="header">
+      <router-link class="link-regreso" :to="'/especialidades'"><i class="fas fa-arrow-left"></i></router-link>
+      <span>{{ nombre_especialidad }}</span>  
+    </div>
+    <div class="m-4">
+      <input
       type="text"
       class="form-control search mb-3"
       v-model="filtro_nombre"
@@ -30,6 +35,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -43,6 +49,7 @@ export default {
       medicos: [],
       stars: 5,
       especialidad: 0,
+      nombre_especialidad: "",
       filtro_nombre: "",
     };
   },
@@ -51,6 +58,7 @@ export default {
       MedicosService.ListarMedicos(filtro_nombre, especialidad)
         .then((response) => {
           this.medicos = response.data;
+          this.nombre_especialidad = this.medicos[0].especialidad;
         })
         .catch((e) => {
           console.log(e);

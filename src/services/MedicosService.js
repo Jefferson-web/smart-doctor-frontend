@@ -32,8 +32,12 @@ class MedicosService {
         return http.get(`/EvaluarMedico/VerPromedioCalificacion/${medicoId}`);
     }
 
-    InfoMedico(medicoId){
-        return http.get(`/EvaluarMedico/InfoMedico/${ medicoId }`);
+    InfoMedico(medicoId) {
+        return http.get(`/EvaluarMedico/InfoMedico/${medicoId}`);
+    }
+
+    VerHorario(horarioId) {
+        return http.get(`/GestionarConsultorio/VerHorario/${horarioId}`);
     }
 
 }

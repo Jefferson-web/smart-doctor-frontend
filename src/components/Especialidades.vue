@@ -1,6 +1,11 @@
 <template>
-  <div class="m-4">
-    <input
+  <div>
+    <div class="header">
+      <router-link class="link-regreso" :to="'/inicio'"><i class="fas fa-arrow-left"></i></router-link>
+      <span>{{ titulo.substring(0, 25) }}...</span>  
+    </div>
+    <div class="m-4">
+      <input
       type="text"
       class="form-control mb-3 search"
       placeholder="Encuentra la especialidad que necesitas"
@@ -11,13 +16,14 @@
       No se encontraron especialidades
     </div>
     <div
-      class="c-card mb-3"
+      class="c-card-e mb-5"
       v-for="(especialidad, index) in especialidades"
       :key="index"
     >
+      <img :src="especialidad.imagen" alt="imagen" width="100%" class="imagen-especialidad">
       <div class="card-body">
         <h5 class="card-title">
-          <h4 class="titulo">{{ especialidad.nombre }}</h4>
+          <h4 class="titulo-e">{{ especialidad.nombre }}</h4>
         </h5>
         <p class="c-card-text">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum
@@ -33,6 +39,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +52,7 @@ export default {
     return {
       especialidades: [],
       filtro: "",
+      titulo: "Conocer los medicos en SmartDoctor"
     };
   },
   methods: {
@@ -52,6 +60,7 @@ export default {
       MedicosService.ListarEspecialidades(filtro_nombre)
         .then((response) => {
           this.especialidades = response.data;
+          console.log(this.especialidades);
         })
         .catch((e) => {
           console.log(e);
@@ -68,7 +77,15 @@ export default {
 </script>
 
 <style>
-.titulo {
+.c-card-e {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  position: relative;
+}
+.c-card-e img{
+  border-radius: 10px 10px 0px 0px;
+}
+.titulo-e {
   font-weight: 600;
   font-size: 18px;
   text-align: start;
@@ -107,5 +124,8 @@ a {
 }
 .search {
   font-size: 14px;
+}
+.imagen-especialidad{
+  border-radius: none !important;
 }
 </style>

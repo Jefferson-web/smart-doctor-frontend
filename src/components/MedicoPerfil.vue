@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="franja">
+      <router-link class="link-regreso-perfil" :to="'/medicos/' + medico.especialidadId"
+        ><i class="fas fa-arrow-left"></i
+      ></router-link>
       <router-link :to="'/calificaciones/' + medico.medicoId" class="btn-star">
         <i class="fas fa-star star-perfil"></i
       ></router-link>
@@ -205,5 +208,14 @@ export default {
 .star-perfil{
   color: #7b1fa2;
   font-size: 20px;
+}
+.link-regreso-perfil{
+  color: white !important;
+  text-decoration: none !important;
+  margin-right: 30px !important;
+  position: absolute;
+  font-size: 20px;
+  top: 15px;
+  left: 20px;
 }
 </style>
