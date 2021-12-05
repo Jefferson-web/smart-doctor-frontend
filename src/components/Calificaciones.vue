@@ -18,7 +18,7 @@
                 large
                 dense
                 size="3px"
-                readonly="true"
+                :readonly="true"
             ></v-rating>
         </div>
     </div>

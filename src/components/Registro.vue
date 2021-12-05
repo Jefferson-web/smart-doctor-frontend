@@ -5,22 +5,27 @@
       Únete a Smart Doctor y empieza a recibir una atencion de calidad con una
       red de profesionales de la salud
     </p>
-        <v-form>
-      <v-text-field
-        v-model="cuenta.nombres"
-        label="Nombres"
-      ></v-text-field>
-      <v-text-field
-        v-model="cuenta.dni"
-        label="DNI"
-      ></v-text-field>
+    <v-form>
+      <v-text-field v-model="cuenta.nombres" label="Nombres"></v-text-field>
+      <v-text-field v-model="cuenta.dni" label="DNI"></v-text-field>
       <v-text-field
         v-model="cuenta.fecha_nacimiento"
         label="Fecha de Nacimiento"
         placeholder="1999-04-16"
         type="date"
       ></v-text-field>
-       <v-text-field
+      <p>Sexo</p>
+      <div class="d-flex justify-content-around">
+        <div>
+          <input type="radio" id="one" :value="true" v-model="cuenta.sexo" />
+          <label for="one" class="ml-3">Hombre</label>
+        </div>
+        <div>
+          <input type="radio" id="two" :value="false" v-model="cuenta.sexo" />
+          <label for="two" class="ml-3">Mujer</label>
+        </div>
+      </div>
+      <v-text-field
         v-model="cuenta.edad"
         label="Edad"
         type="number"
@@ -29,7 +34,7 @@
         v-model="cuenta.distrito_colonia"
         label="Distrito/Colonia"
       ></v-text-field>
-       <v-text-field
+      <v-text-field
         v-model="cuenta.email"
         label="Correo electrónico"
       ></v-text-field>
@@ -54,27 +59,57 @@
 </template>
 
 <script>
+import AccountService from "../services/AccountService";
+
 export default {
-    name: 'Registro',
-    data(){
-        return {
-            cuenta: {
-                nombres:'',
-                dni: '',
-                fecha_nacimiento: '',
-                edad: 0,
-                distrito_colonia: '',
-                email: '',
-                contrasena: ''
-            },
-            loading: false
-        }
+  name: "Registro",
+  data() {
+    return {
+      cuenta: {
+        nombres: "",
+        dni: "",
+        fecha_nacimiento: "",
+        sexo: true,
+        edad: 0,
+        distrito_colonia: "",
+        email: "",
+        contrasena: "",
+      },
+      loading: false,
+    };
+  },
+  methods: {
+    Registrar() {
+      if (this.isFormValid()) {
+        console.log(this.cuenta);
+        AccountService.Registrar(this.cuenta)
+          .then((response) => {
+            this.$router.replace({
+              name: "Login",
+              query: { email: response.data.email },
+            });
+            console.log(response);
+          })
+          .catch((e) => {
+            alert("Ocurrio un error.");
+            console.log(e);
+          });
+      } else {
+        alert("Debe completar todos los campos");
+      }
     },
-    methods: {
-        Registrar(){
-            console.log(this.cuenta);
-        }
-    }
+    isFormValid() {
+      return (
+        this.cuenta.nombres != "" &&
+        this.cuenta.dni != "" &&
+        this.cuenta.fecha_nacimiento != "" &&
+        this.cuenta.edad != "" &&
+        this.cuenta.distrito_colonia != "" &&
+        this.cuenta.email != "" &&
+        this.cuenta.contrasena != ""
+      );
+    },
+  },
 };
 </script>
 

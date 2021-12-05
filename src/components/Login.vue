@@ -70,6 +70,9 @@ export default {
       }
     },
   },
+  mounted(){
+    this.login.email = this.$route.query.email;
+  }
 };
 </script>
 
@@ -101,6 +104,7 @@ export default {
   color: white;
   animation: spinner linear infinite 0.8s;
 }
+
 
 @keyframes spinner {
   from {

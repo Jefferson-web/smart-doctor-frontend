@@ -36,6 +36,7 @@
         </div>
       </router-link>
     </div>
+    <button class="btn-logout" v-on:click="Salir"><i class="fas fa-sign-out-alt"></i></button>
   </div>
 </template>
 
@@ -48,6 +49,12 @@ export default {
   data(){
     return {
       paciente: {}
+    }
+  },
+  methods: {
+    Salir(){
+      TokenService.logout();
+      this.$router.replace("/login");
     }
   },
   mounted(){
@@ -81,5 +88,20 @@ export default {
   color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   margin: 0;
+}
+.btn-logout{
+  color: white;
+  background: #1976d2;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: all ease-in-out .5s;
+}
+.btn-logout:hover{
+  background: #1365b8;
 }
 </style>
