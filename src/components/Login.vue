@@ -25,7 +25,7 @@
         :disabled="loading"
       >
         <div>Iniciar Sesión</div>
-        <i class="fas fa-chevron-right"></i>
+        <i class="fas fa-chevron-right" v-if="!loading"></i>
         <i class="fas fa-circle-notch" v-if="loading"></i>
       </button>
     </v-form>
