@@ -63,6 +63,20 @@ class MedicosService {
     ListarPagos(pacienteId){
         return http.get(`/Pagos/ListarPagos/${pacienteId}`);
     }
+
+    Calificar(calificacion){
+        return http.post('/EvaluarMedico/CalificarMedico', calificacion);
+    }
+
+    EliminarCalificacion(calificacion){
+        return http.delete(`/EvaluarMedico/EliminarCalificacion/${calificacion.calificacionId}`);
+    }
+
+    EditarComentario(calificacion){
+        let params = { "calificacionId": calificacion.calificacionId, "comentario": calificacion.comentario };
+        return http.get('/EvaluarMedico/EditarComentario', {params});
+    }
+
 }
 
 export default new MedicosService();
