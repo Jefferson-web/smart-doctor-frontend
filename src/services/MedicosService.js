@@ -63,7 +63,6 @@ class MedicosService {
     ListarPagos(pacienteId){
         return http.get(`/Pagos/ListarPagos/${pacienteId}`);
     }
-
 }
 
 export default new MedicosService();
