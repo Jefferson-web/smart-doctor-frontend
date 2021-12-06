@@ -88,7 +88,6 @@ export default {
     }
     .citas-agendadas{
         background: #f8f8f8;
-        height: 100%;
     }
     .c-cita{
         background: white;

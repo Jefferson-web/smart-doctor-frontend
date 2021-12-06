@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header">
+        <div class="header-metodo-pago">
             <span>Método de pago</span>
         </div>
         <div class="precio">
@@ -65,10 +65,11 @@ export default {
 </script>
 
 <style>
-    .header{
+    .header-metodo-pago{
         background: white !important;
         color: black;
         font-weight: 600;
+        padding: 15px 20px !important;
     }
     .precio{
         font-size: 60px;

@@ -1,5 +1,6 @@
 <template>
-  <div class="bottom-navigation">
+  <div>
+    <div class="bottom-navigation">
       <router-link to="/inicio" class="nav-item">
         <i class="fas fa-home"></i>
         <span>Home</span>
@@ -17,6 +18,8 @@
         <span>Salir</span>
       </button>
     </div>
+    <br><br>
+  </div>
 </template>
 
 <script>
@@ -38,7 +41,7 @@ export default {
 .bottom-navigation{
   display: flex;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   border-top: 1px solid rgb(220, 220, 220);
