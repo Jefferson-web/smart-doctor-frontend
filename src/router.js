@@ -83,7 +83,6 @@ const router = new VueRouter({
 
 const routesAllowed = ["Login", "Registro"];
 
-routesAllowed.includes();
 router.beforeEach((to, from, next) => {
     if (!routesAllowed.includes(to.name) && !TokenService.isAuthenticate) {
         next({ name: 'Login' });
