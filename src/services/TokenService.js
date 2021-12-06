@@ -30,6 +30,17 @@ class TokenService {
         localStorage.removeItem("user");
     }
 
+    ActualizarUsuarioSesion(paciente){
+        var antiguoPaciente = this.getUser();
+        antiguoPaciente.nombres = paciente.nombres;
+        antiguoPaciente.DNI = paciente.dni;
+        antiguoPaciente.sexo = paciente.sexo;
+        antiguoPaciente.edad = paciente.edad;
+        antiguoPaciente.distrito_colonia = paciente.distrito_colonia;
+        antiguoPaciente.fecha_nacimiento = paciente.fecha_nacimiento; 
+        this.setUser(antiguoPaciente);
+    }
+
 }
 
 export default new TokenService();

@@ -1,12 +1,18 @@
 <template>
   <div>
     <div class="usuario">
+      <div class="inicial-nombre">
+        {{ paciente.nombres.substring(0, 1) }}
+      </div>
       <h5 class="nombre_usuario">Hola {{ paciente.nombres }}</h5>
       <p class="edad_usuario"> 
         <span v-if="paciente.sexo">Hombre</span>
         <span v-if="!paciente.sexo">Mujer</span>
         <span> {{ paciente.edad }} años</span>
       </p>
+       <router-link class="config" to="/editar-datos">
+        <i class="fas fa-cog"></i>
+      </router-link>
     </div>
     <div class="px-4">
       <h6 class="title">Elige qué deseas hacer hoy</h6>
@@ -63,6 +69,26 @@ export default {
 </script>
 
 <style>
+.inicial-nombre{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  background: darkorange;
+  border-radius: 50%;
+  color: white;
+  border: 3px solid white;
+}
+.config{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white !important;
+        text-decoration: none;
+    }
 .title {
   font-weight: 600;
   text-align: start;
@@ -70,7 +96,7 @@ export default {
 }
 .usuario {
   width: 100%;
-  height: 150px;
+  height: 220px;
   background: #7b1fa2;
   display: flex;
   justify-content: center;

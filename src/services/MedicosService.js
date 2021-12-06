@@ -77,6 +77,14 @@ class MedicosService {
         return http.get('/EvaluarMedico/EditarComentario', {params});
     }
 
+    ObtenerInfoPaciente(pacienteId){
+        return http.get(`/AfiliarPaciente/ObtenerInfoPaciente/${pacienteId}`);
+    }
+
+    EditarPaciente(paciente){
+        return http.put(`/AfiliarPaciente/EditarPaciente/${paciente.pacienteId}`, paciente);
+    }
+
 }
 
 export default new MedicosService();

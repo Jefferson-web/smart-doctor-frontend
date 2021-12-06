@@ -77,6 +77,11 @@ const router = new VueRouter({
             path: '/listar-pagos',
             name: 'ListarPagos',
             component: () => import("./components/ListarPagos")
+        },
+        {
+            path: '/editar-datos',
+            name: 'EditarDatos',
+            component: () => import("./components/EditarDatos")
         }
     ]
 });
