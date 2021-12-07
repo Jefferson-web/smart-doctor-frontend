@@ -1,24 +1,28 @@
-# smartdoctor-frontend
+# Smart Doctor Pacientes - Front-end 
 
-## Project setup
-```
+Desarrollo de la aplicación Smart Doctor para el curso de Arquitectura Orientada a Servicios. Contempla el uso de las tecnologías de VueJS y .NET.
+
+## Installation
+
+Instalar las dependencias del proyecto
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+Para ejecutar el aplicativo
+
+```bash
 npm run serve
 ```
+## Integrandes
+* Jefferson Henry Ledesma Naupa
+* Giancarlos Enrique Apolaya Naquiche
+* Fernando Alex Zapata Sánchez
+* Juan Norberto Macalupu Diaz
+* Kimberly Yasmin Japay Rojas
+* John Panuera Costilla
+* Elena Uceda Bernabé
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
