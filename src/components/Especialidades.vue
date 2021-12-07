@@ -15,11 +15,11 @@
     <div v-if="especialidades.length == 0" class="alert alert-primary" role="alert">
       No se encontraron especialidades
     </div>
+    
     <div
-      class="c-card-e mb-5"
-      v-for="(especialidad, index) in especialidades"
-      :key="index"
+      class="c-card-e mb-5" v-for="(especialidad, index) in especialidades" :key="index"
     >
+    
       <img :src="especialidad.imagen" alt="imagen" width="100%" class="imagen-especialidad">
       <div class="card-body">
         <h5 class="card-title">
@@ -57,13 +57,14 @@ export default {
   },
   methods: {
     ListarEspecialidades(filtro_nombre) {
-      MedicosService.ListarEspecialidades(filtro_nombre)
-        .then((response) => {
+      
+      MedicosService.ListarEspecialidades(filtro_nombre).then((response) => {
           this.especialidades = response.data;
         })
         .catch((e) => {
           console.log(e);
         });
+
     },
     FiltrarEspecialidades() {
       this.ListarEspecialidades(this.filtro);

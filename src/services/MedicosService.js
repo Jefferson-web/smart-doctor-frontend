@@ -1,5 +1,7 @@
 import http from '../http-common';
 
+// Clase para hacer las llamadas al servicio
+
 class MedicosService {
 
     ListarEspecialidades(filtro_nombre = null) {

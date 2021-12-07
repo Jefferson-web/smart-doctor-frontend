@@ -6,7 +6,10 @@
     </div>
     <div class="mx-4">
     <v-row justify="center" class="mt-4">
+
+      <!-- VDATEPICKER -->
       <v-date-picker v-model="picker" color="primary" v-on:change="datePickerChange()"></v-date-picker>
+    
     </v-row>
     <p class="mt-4 text-center" v-if="horarios.length == 0">No hay horarios disponibles</p>
     

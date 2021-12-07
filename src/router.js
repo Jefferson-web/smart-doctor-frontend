@@ -82,6 +82,11 @@ const router = new VueRouter({
             path: '/editar-datos',
             name: 'EditarDatos',
             component: () => import("./components/EditarDatos")
+        },
+        {
+            path: '/pagina',
+            name: 'Pagina',
+            component: () => import("./components/Pagina")
         }
     ]
 });
